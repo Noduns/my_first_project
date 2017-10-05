@@ -9,12 +9,12 @@ import math
 # Génération des données initiales
 #==============================================================================
 
-#permet de générer un jeu de DOA et de distances à partir d'un nombre de points, avec une incertitude de +/- 0.5° et +/- 0.5Nm
+#permet de générer un jeu de DOA et de distances à partir d'un nombre de points, avec une incertitude de +/- 15° et +/- 15Nm
 def data_threat(n_points):
     data_single_threat_DOA = np.linspace(0, 360 - 360 / n_points, n_points)
     data_single_threat_dist = np.linspace(0, 360 - 360 / n_points, n_points)
-    data_single_threat_DOA = data_single_threat_DOA + np.random.rand(len(data_single_threat_DOA))-0.5*np.ones((len(data_single_threat_DOA)))
-    data_single_threat_dist = data_single_threat_dist + np.random.rand(len(data_single_threat_dist))-0.5*np.ones((len(data_single_threat_dist)))
+    data_single_threat_DOA = data_single_threat_DOA + (np.random.rand(len(data_single_threat_DOA))-0.5*np.ones((len(data_single_threat_DOA))))*15
+    data_single_threat_dist = data_single_threat_dist + (np.random.rand(len(data_single_threat_dist))-0.5*np.ones((len(data_single_threat_dist))))*15
     rand.shuffle(data_single_threat_dist)
     data_single_threat = np.ones((len(data_single_threat_DOA), 2))
     data_single_threat[:,0] = data_single_threat_DOA
